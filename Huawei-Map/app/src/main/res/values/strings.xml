@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">xml_Second</string>
+    <string name="enter_address_city_or_zip_code">Enter Address, City or Zip Code</string>
+</resources>
