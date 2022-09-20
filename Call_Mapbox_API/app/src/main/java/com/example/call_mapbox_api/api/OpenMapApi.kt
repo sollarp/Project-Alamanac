@@ -12,6 +12,6 @@ interface OpenMapApi {
 //    suspend fun getDistance(@Query("distance") distance: Number,
 //                            @Query("latitude") latitude: Double,
 //                            @Query("longitude") longitude: Double
-//    ): List<ChargingStationNetworkDto>
+//    ): List<EvPointsBrakeItemX>>>
 
 }
