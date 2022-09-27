@@ -20,13 +20,14 @@ object RetrofitClient {
 //    .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setLenient();
 
 
-        var retrofit: Retrofit = retrofit2.Retrofit.Builder()
-            .baseUrl("https://api.openchargemap.io/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(mOkHttpClient)
-            .build()
-    val evList = retrofit.create(OpenMapApi::class.java)
-
-
-
+        private val retrofit: Retrofit by lazy {
+            Retrofit.Builder()
+                .baseUrl("https://api.openchargemap.io/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(mOkHttpClient)
+                .build()
+        }
+    val evList : OpenMapApi by lazy {
+        retrofit.create(OpenMapApi::class.java)
+    }
 }
