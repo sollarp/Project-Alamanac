@@ -2,7 +2,8 @@ package com.example.call_mapbox_api.remote
 
 
 import androidx.annotation.Keep
-import com.example.call_mapbox_api.model.EvPoints
+import com.example.call_mapbox_api.model.EvPointDetails
+import com.example.call_mapbox_api.model.EvPointIds
 import kotlinx.serialization.Serializable
 
 @Keep
@@ -30,10 +31,35 @@ data class EvPointsBrakeItemX(
 )
 
 
-fun List<EvPointsBrakeItemX>.toEvPoints() : List<EvPoints> {
+
+fun List<EvPointsBrakeItemX>.toEvPointIds() : List<EvPointIds> {
     return this.map {
-        EvPoints(
+        EvPointIds(
             ID = it.ID
+        )
+    }
+}
+
+fun List<EvPointsBrakeItemX>.toEvPointDetails() : List<EvPointDetails> {
+    return this.map {
+        EvPointDetails(
+            Connection = it.Connections,
+            AddressInfo =it.AddressInfo,
+            DataProviderID = it.DataProviderID,
+            DataQualityLevel = it.DataQualityLevel,
+            DateCreated = it.DateCreated,
+            DateLastStatusUpdate = it.DateLastStatusUpdate,
+            DateLastVerified = it.DateLastVerified,
+            ID = it.ID,
+            IsRecentlyVerified = it.IsRecentlyVerified,
+            NumberOfPoints = it.NumberOfPoints,
+            OperatorID = it.OperatorID,
+            StatusTypeID = it.StatusTypeID,
+            SubmissionStatusTypeID = it.SubmissionStatusTypeID,
+            UUID = it.UUID,
+            UsageCost = it.UsageCost,
+            UsageTypeID = it.UsageTypeID
+
         )
     }
 }

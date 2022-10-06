@@ -11,6 +11,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,80 +27,88 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/location_details"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black" />
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/address"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black" />
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         tools:text="Worcester Street Car Park" />
+
                     <TextView
                         android:id="@+id/addressline1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         tools:text="Worcester Street" />
+
                     <TextView
                         android:id="@+id/addressline2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         tools:text="Jericho" />
 
                     <TextView
                         android:id="@+id/town"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         tools:text="Oxford" />
+
                     <TextView
                         android:id="@+id/state"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         tools:text="Oxfordshire" />
+
                     <TextView
                         android:id="@+id/postcode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         tools:text="OX1 1JD" />
+
                     <TextView
                         android:id="@+id/latitude"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         tools:text="51.752602" />
+
                     <TextView
                         android:id="@+id/longitude"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/black"
+                        android:textSize="14sp"
                         tools:text="-1.26586" />
 
                 </LinearLayout>
@@ -118,12 +127,13 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/usage_cost"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="usage cost"
-                            android:textSize="16sp"
                             android:textColor="@color/black"
-                            android:textStyle="bold"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/absolute_magnitude"
@@ -133,15 +143,16 @@
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             tools:text="Inclusive; for Polar Plus subscription members only. £1.70 per hour for type 2. Parking fees apply" />
+
                         <TextView
                             android:id="@+id/number_of_bays"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:text="Number of Bays"
+                            android:textColor="@color/black"
                             android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/connection_type_id"
@@ -155,28 +166,29 @@
                     </LinearLayout>
 
                 </LinearLayout>
-                    <include
-                        android:id="@+id/news_title"
-                        layout="@layout/fragment_list_connectios"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/connection_type_id" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/connection_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/fragment_list_connectios" />
 
                 <TextView
-                    android:id="@+id/DateLastStatusUpdate"
+                    android:id="@+id/dateLastStatusUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/news_title"
                     android:text="@string/datelaststatusupdate"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black" />
+                    app:layout_constraintTop_toBottomOf="@id/news_title" />
             </LinearLayout>
 
         </ScrollView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
