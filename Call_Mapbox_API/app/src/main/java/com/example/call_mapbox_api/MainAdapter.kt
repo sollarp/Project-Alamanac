@@ -2,7 +2,6 @@ package com.example.call_mapbox_api
 
 
 import android.content.Intent
-import android.icu.text.CaseMap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +20,7 @@ open class MainAdapter(private val openMapList: ArrayList<EvPointDetails>) :
         init {
             // Define click listener for the ViewHolder's View.
             textView = itemView.findViewById(R.id.id_name)
+
         }
     }
 
@@ -35,7 +35,7 @@ open class MainAdapter(private val openMapList: ArrayList<EvPointDetails>) :
         mainViewHolder.textView.setOnClickListener {
             val intent = Intent(mainViewHolder.itemView.context, SecondActivity::class.java)
             val pos = openMapList[position]
-            intent.putExtra("SELECTED ITEM POSITION", position)
+            //intent.putExtra("SELECTED ITEM POSITION", position)
             val AddressLine1 = pos.AddressInfo?.AddressLine1
             val AddressLine2 = pos.AddressInfo?.AddressLine2
             val Longitude = pos.AddressInfo?.Longitude
@@ -46,6 +46,8 @@ open class MainAdapter(private val openMapList: ArrayList<EvPointDetails>) :
             val UsageCost = pos.UsageCost
             val NumberOfPoints = pos.NumberOfPoints
             val dataUpdate = pos.DateLastStatusUpdate
+            val connectionList = pos.Connection
+
             val selectedPoint = ItemDataConverter(
                 AddressLine1,
                 AddressLine2,
@@ -58,7 +60,18 @@ open class MainAdapter(private val openMapList: ArrayList<EvPointDetails>) :
                 NumberOfPoints,
                 dataUpdate,
             )
-            intent.putExtra("DATA", selectedPoint)
+            val connToArray = connectionList?.toConnections()
+            val letIn = connToArray?.let { it1 ->
+                ConnectionList(
+                    connectionItems = it1
+                )
+            }
+            intent.putExtra("ALL ITEMS", selectedPoint)
+            val arrayHolder = ArrayList<ConnectionList>()
+            if (letIn != null) {
+                arrayHolder.add(letIn)
+            }
+            intent.putParcelableArrayListExtra("ARRAY OF CONNECTIONS", arrayHolder)
             mainViewHolder.itemView.context.startActivity(intent)
         }
     }

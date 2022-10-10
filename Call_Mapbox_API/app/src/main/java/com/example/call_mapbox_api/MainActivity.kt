@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity(){
     private lateinit var itemParsed: ArrayList<EvPointDetails>
     private var json = Json { ignoreUnknownKeys = true }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_main)

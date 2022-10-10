@@ -12,7 +12,9 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        val itemDataConvert = intent.getSerializableExtra("DATA") as ItemDataConverter
+        val listDataConvert = intent.getParcelableArrayListExtra<ConnectionList>("ARRAY OF CONNECTIONS")
+        println(listDataConvert)
+        val itemDataConvert = intent.getSerializableExtra("ALL ITEMS") as ItemDataConverter
         val add1 = findViewById<TextView>(R.id.addressline1)
         val add2 = findViewById<TextView>(R.id.addressline2)
         val town = findViewById<TextView>(R.id.town)
@@ -34,6 +36,7 @@ class SecondActivity : AppCompatActivity() {
         lon.text = itemDataConvert.Longitude.toString()
         lat.text = itemDataConvert.Latitude.toString()
         lastUpdate.text = itemDataConvert.DateLastStatusUpdate
+
 
 
 

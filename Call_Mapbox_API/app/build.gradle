@@ -3,6 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10'
+    id "kotlin-parcelize"
+
+
 }
 
 
@@ -81,6 +84,7 @@ dependencies {
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+
 
 }
 java {

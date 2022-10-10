@@ -1,7 +1,6 @@
 package com.example.call_mapbox_api.api
 
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
+
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,10 +18,10 @@ object RetrofitClient {
 //    var gsonBuilder = GsonBuilder()
 //    .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setLenient();
 
-
+//  https://api.openchargemap.io/
         private val retrofit: Retrofit by lazy {
             Retrofit.Builder()
-                .baseUrl("https://api.openchargemap.io/")
+                .baseUrl("https://d01abe6f-6cca-4fc5-aaf9-18b2ff7178f4.mock.pstmn.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(mOkHttpClient)
                 .build()

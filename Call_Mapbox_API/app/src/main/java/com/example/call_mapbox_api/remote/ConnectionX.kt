@@ -1,9 +1,9 @@
 package com.example.call_mapbox_api.remote
 
 
-import android.os.Parcel
 import androidx.annotation.Keep
-import android.os.Parcelable
+import com.example.call_mapbox_api.ConnectionList
+import com.example.call_mapbox_api.model.EvPointIds
 import kotlinx.serialization.Serializable
 
 @Keep
