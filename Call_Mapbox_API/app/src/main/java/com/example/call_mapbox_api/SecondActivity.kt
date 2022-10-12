@@ -2,18 +2,26 @@ package com.example.call_mapbox_api
 
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 class SecondActivity : AppCompatActivity() {
+
+    private lateinit var listDataConvert: ArrayList<Connection>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        val listDataConvert = intent.getParcelableArrayListExtra<ConnectionList>("ARRAY OF CONNECTIONS")
+        listDataConvert = intent.getParcelableArrayListExtra("ARRAY OF CONNECTIONS")!!
         println(listDataConvert)
+
+        val adapter = DetailsAdapter(listDataConvert)
+
+        val recyclerView = findViewById<RecyclerView>(R.id.connection_recycler)
+        recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.adapter = adapter
+
         val itemDataConvert = intent.getSerializableExtra("ALL ITEMS") as ItemDataConverter
         val add1 = findViewById<TextView>(R.id.addressline1)
         val add2 = findViewById<TextView>(R.id.addressline2)
@@ -36,9 +44,6 @@ class SecondActivity : AppCompatActivity() {
         lon.text = itemDataConvert.Longitude.toString()
         lat.text = itemDataConvert.Latitude.toString()
         lastUpdate.text = itemDataConvert.DateLastStatusUpdate
-
-
-
 
         /*Toast.makeText(
             this,

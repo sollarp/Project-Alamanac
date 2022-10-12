@@ -20,7 +20,6 @@ open class MainAdapter(private val openMapList: ArrayList<EvPointDetails>) :
         init {
             // Define click listener for the ViewHolder's View.
             textView = itemView.findViewById(R.id.id_name)
-
         }
     }
 
@@ -35,6 +34,7 @@ open class MainAdapter(private val openMapList: ArrayList<EvPointDetails>) :
         mainViewHolder.textView.setOnClickListener {
             val intent = Intent(mainViewHolder.itemView.context, SecondActivity::class.java)
             val pos = openMapList[position]
+            println("open maplist VALUE: $openMapList")
             //intent.putExtra("SELECTED ITEM POSITION", position)
             val AddressLine1 = pos.AddressInfo?.AddressLine1
             val AddressLine2 = pos.AddressInfo?.AddressLine2
@@ -61,16 +61,8 @@ open class MainAdapter(private val openMapList: ArrayList<EvPointDetails>) :
                 dataUpdate,
             )
             val connToArray = connectionList?.toConnections()
-            val letIn = connToArray?.let { it1 ->
-                ConnectionList(
-                    connectionItems = it1
-                )
-            }
             intent.putExtra("ALL ITEMS", selectedPoint)
-            val arrayHolder = ArrayList<ConnectionList>()
-            if (letIn != null) {
-                arrayHolder.add(letIn)
-            }
+            val arrayHolder = connToArray?.let { it1 -> ArrayList<Connection>(it1) }
             intent.putParcelableArrayListExtra("ARRAY OF CONNECTIONS", arrayHolder)
             mainViewHolder.itemView.context.startActivity(intent)
         }
