@@ -14,7 +14,6 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         listDataConvert = intent.getParcelableArrayListExtra("ARRAY OF CONNECTIONS")!!
-        println(listDataConvert)
 
         val adapter = DetailsAdapter(listDataConvert)
 
