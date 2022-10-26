@@ -9,5 +9,5 @@
         android:id="@+id/mainActivity"
         android:name="com.example.call_mapbox_api.MainActivity"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_searchbar" />
+        tools:layout="@layout/fragment_main" />
 </navigation>

@@ -1,6 +1,8 @@
 package com.example.call_mapbox_api
 
+
 import java.io.Serializable
+
 
 data class ItemDataConverter(
     val AddressLine1: String?,
