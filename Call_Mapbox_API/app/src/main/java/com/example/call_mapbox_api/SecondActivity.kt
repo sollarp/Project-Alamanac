@@ -14,10 +14,7 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         listDataConvert = intent.getParcelableArrayListExtra("ARRAY OF CONNECTIONS")!!
-        println(listDataConvert)
-
         val adapter = DetailsAdapter(listDataConvert)
-
         val recyclerView = findViewById<RecyclerView>(R.id.connection_recycler)
         recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.adapter = adapter
