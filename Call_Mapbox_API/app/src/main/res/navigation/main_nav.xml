@@ -9,5 +9,5 @@
         android:id="@+id/mapBarFragment"
         android:name="com.example.call_mapbox_api.MapBarFragment"
         android:label="fragment_searchMap"
-        tools:layout="@layout/activity_map_bar" />
+        tools:layout="@layout/activity_mapbar" />
 </navigation>
