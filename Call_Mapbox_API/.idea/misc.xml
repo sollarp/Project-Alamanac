@@ -23,7 +23,7 @@
         <entry key="app/src/main/res/layout/fragment_mapview.xml" value="0.14" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2484375" />
         <entry key="app/src/main/res/layout/fragment_searchbar.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_searchlist.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_searchlist.xml" value="0.25" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.18704710144927536" />
       </map>
     </option>

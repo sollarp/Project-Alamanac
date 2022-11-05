@@ -1,9 +1,12 @@
 package com.example.call_mapbox_api
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -29,6 +32,7 @@ class SearchListActivity: AppCompatActivity(){
             this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         softKey.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)*/
         getItemsFromApi()
+
 
     }
     fun getItemsFromApi() {
