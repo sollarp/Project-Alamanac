@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.call_mapbox_api.model.EvPointDetails
+import com.example.call_mapbox_api.ui.DetailActivity
 
 class SearchRecycleAdapter(private val address: ArrayList<EvPointDetails>) :
     RecyclerView.Adapter<SearchRecycleAdapter.ViewHolder>() {

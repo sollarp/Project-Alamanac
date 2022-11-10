@@ -23,7 +23,7 @@ class SearchListActivity: AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_autocomsearchbar)
+        setContentView(R.layout.activity_searchlist)
         //val searchBar = findViewById<AutoCompleteTextView>(R.id.input_autosearch)
        /* val softKey =
             this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
