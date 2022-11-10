@@ -1,37 +1,52 @@
-package com.example.call_mapbox_api
+package com.example.call_mapbox_api.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.call_mapbox_api.R
+import com.example.call_mapbox_api.data.SearchRecycleAdapter
 import com.example.call_mapbox_api.api.RetrofitClient
 import com.example.call_mapbox_api.model.EvPointDetails
 import com.example.call_mapbox_api.remote.EvPointsBrakeItemX
 import com.example.call_mapbox_api.remote.toEvPointDetails
+import com.example.call_mapbox_api.util.BaseViewModelFactory
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.encodeToJsonElement
 
 
-class SearchListActivity: AppCompatActivity(){
+class SearchListActivity: AppCompatActivity() {
 
-    private lateinit var itemParsed: ArrayList<EvPointDetails>
-    private var json = Json { ignoreUnknownKeys = true }
+    private val viewModel: SearchListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchlist)
-        //val searchBar = findViewById<AutoCompleteTextView>(R.id.input_autosearch)
-       /* val softKey =
-            this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        softKey.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)*/
-        getItemsFromApi()
-
-
     }
+
+}
+
+
+
+
+
+/*private lateinit var itemParsed: ArrayList<EvPointDetails>
+private var json = Json { ignoreUnknownKeys = true }*/
+
+    /*val searchBar = findViewById<AutoCompleteTextView>(R.id.input_autosearch)
+     val softKey =
+         this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+     softKey.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+    getItemsFromApi()
+
+
     fun getItemsFromApi() {
         lifecycleScope.launchWhenCreated {
             try {
@@ -65,4 +80,4 @@ class SearchListActivity: AppCompatActivity(){
             }
         }
     }
-}
+}*/
