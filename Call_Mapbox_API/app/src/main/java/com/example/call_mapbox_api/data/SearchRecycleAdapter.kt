@@ -18,7 +18,7 @@ import com.example.call_mapbox_api.model.EvPointDetails
 import com.example.call_mapbox_api.toConnections
 import com.example.call_mapbox_api.ui.DetailActivity
 
-class SearchRecycleAdapter(private val address: ArrayList<EvPointDetails>) :
+class SearchRecycleAdapter(private val address: List<EvPointDetails>) :
     RecyclerView.Adapter<SearchRecycleAdapter.ViewHolder>() {
     /**
      * Provide a reference to the type of views that you are using

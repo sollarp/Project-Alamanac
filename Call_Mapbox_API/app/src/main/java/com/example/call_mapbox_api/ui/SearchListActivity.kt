@@ -3,20 +3,52 @@ package com.example.call_mapbox_api.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.call_mapbox_api.R
+import com.example.call_mapbox_api.data.SearchRecycleAdapter
+import com.example.call_mapbox_api.model.EvPointDetails
+import kotlinx.coroutines.launch
 
 class SearchListActivity: AppCompatActivity() {
 
-    private val viewModel: SearchListViewModel by viewModels()
+    val viewModel: SearchListViewModel by lazy {
+        ViewModelProvider(this).get(SearchListViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_searchlist)
-        viewModel.viewModelScope
+        //val viewModel: SearchListViewModel by viewModels()
+        //val viewModel = ViewModelProvider(this)[SearchListViewModel::class.java]
+        viewModel.listOfItems.observe(this) { items ->
+            println(items)
+        }
     }
-
 }
+
+            /*repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.getElements()
+                val itemParsed = viewModel.listOfItems
+                itemParsed.let {
+                    val adapter = SearchRecycleAdapter(itemParsed)
+                    val recyclerView = findViewById<RecyclerView>(R.id.recycle_search)
+                    if (recyclerView != null) {
+                        recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+                    }
+                    if (recyclerView != null) {
+                        recyclerView.adapter = adapter
+                    }
+                }
+
+            }*/
+
+
+
+
+
+
 
 
 
