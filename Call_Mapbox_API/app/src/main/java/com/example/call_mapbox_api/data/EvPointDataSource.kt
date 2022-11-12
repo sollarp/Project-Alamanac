@@ -7,15 +7,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-
-class EvPointDataSource (
-    val openMapApi: OpenMapApi,
+class EvPointDataSource(
+    val latestEvpoint: OpenMapApi,
     private val refreshIntervalMs: Long = 5000
 ) {
-    val latestEVPoint: Flow<List<EvPointDetails>> = flow {
+        val latestEVPoint: Flow<List<EvPointDetails>> = flow {
+        val result = latestEvpoint.getMaxResults()
         while(true) {
-            val latestEvpoint = openMapApi.getMaxResults()
-            val getLatestEvpoint = EvApiParser(latestEvpoint)
+            val getLatestEvpoint = EvApiParser(result)
             emit(getLatestEvpoint) // Emits the result of the request to the flow
             delay(refreshIntervalMs) // Suspends the coroutine for some time
         }
