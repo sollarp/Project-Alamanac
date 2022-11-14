@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout/activity_map_bar.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_mapbar.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/activity_search_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_searchlist.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_autocompletesearchbar.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_evlist.xml" value="0.24947916666666667" />

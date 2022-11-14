@@ -13,4 +13,5 @@
     <string name="datelaststatusupdate">DateLastStatusUpdate</string>
     <string name="enter_address_city_or_zip_code">entrer_address</string>
     <string name="mapholder">mapholder</string>
+    <string name="go">Go</string>
 </resources>
