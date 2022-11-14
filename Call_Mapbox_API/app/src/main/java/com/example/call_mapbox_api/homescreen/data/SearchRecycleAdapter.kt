@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.data
+package com.example.call_mapbox_api.homescreen.data
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -10,14 +10,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.call_mapbox_api.Connection
 import com.example.call_mapbox_api.util.ItemDataConverter
 import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.model.EvPointDetails
 import com.example.call_mapbox_api.toConnections
-import com.example.call_mapbox_api.ui.DetailActivity
+import com.example.call_mapbox_api.homescreen.ui.DetailActivity
 
 class SearchRecycleAdapter(private val address: List<EvPointDetails>) :
     RecyclerView.Adapter<SearchRecycleAdapter.ViewHolder>() {

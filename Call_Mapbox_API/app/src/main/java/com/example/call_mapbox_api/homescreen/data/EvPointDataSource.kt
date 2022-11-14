@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.data
+package com.example.call_mapbox_api.homescreen.data
 
 import com.example.call_mapbox_api.api.OpenMapApi
 import com.example.call_mapbox_api.model.EvPointDetails
@@ -8,15 +8,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class EvPointDataSource(
-    val latestEvpoint: OpenMapApi,
+    private val latestEvpoint: OpenMapApi,
     private val refreshIntervalMs: Long = 5000
 ) {
-        val latestEVPoint: Flow<List<EvPointDetails>> = flow {
-        val result = latestEvpoint.getMaxResults()
-        while(true) {
+    fun getLatestEvPoint(): Flow<List<EvPointDetails>> {
+        return flow {
+            val result = latestEvpoint.getMaxResults()
             val getLatestEvpoint = EvApiParser(result)
             emit(getLatestEvpoint) // Emits the result of the request to the flow
             delay(refreshIntervalMs) // Suspends the coroutine for some time
         }
+
     }
 }

@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.ui
+package com.example.call_mapbox_api.homescreen.ui
 
 import android.os.Bundle
 import android.widget.TextView
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.call_mapbox_api.Connection
-import com.example.call_mapbox_api.data.DetailRecycleAdapter
+import com.example.call_mapbox_api.homescreen.data.DetailRecycleAdapter
 import com.example.call_mapbox_api.util.ItemDataConverter
 import com.example.call_mapbox_api.R
 

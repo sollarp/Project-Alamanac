@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.data
+package com.example.call_mapbox_api.homescreen.data
 
 import android.view.LayoutInflater
 import android.view.View
