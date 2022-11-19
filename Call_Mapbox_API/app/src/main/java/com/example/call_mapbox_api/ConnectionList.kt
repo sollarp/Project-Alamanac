@@ -22,7 +22,7 @@ data class Connection(
     val StatusTypeID: Int?
 ) : Parcelable
 
-fun List<ConnectionX>.toConnections() : List<Connection> {
+fun List<ConnectionX>.toConnections() : Array<Connection> {
     return this.map {
         Connection(
             ConnectionTypeID = it.ConnectionTypeID,
@@ -35,5 +35,5 @@ fun List<ConnectionX>.toConnections() : List<Connection> {
             Quantity = it.Quantity,
             StatusTypeID = it.StatusTypeID
         )
-    }
+    }.toTypedArray()
 }

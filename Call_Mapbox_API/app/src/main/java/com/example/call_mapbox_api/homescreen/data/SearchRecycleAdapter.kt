@@ -14,33 +14,42 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.call_mapbox_api.Connection
 import com.example.call_mapbox_api.util.ItemDataConverter
 import com.example.call_mapbox_api.R
+import com.example.call_mapbox_api.databinding.ActivityDetailsBinding.bind
 import com.example.call_mapbox_api.model.EvPointDetails
 import com.example.call_mapbox_api.toConnections
-import com.example.call_mapbox_api.homescreen.ui.DetailActivity
+import com.example.call_mapbox_api.homescreen.ui.DetailFragment
 
-class SearchRecycleAdapter(private val address: List<EvPointDetails>) :
+class SearchRecycleAdapter(private val address: List<EvPointDetails>,
+                           val listener: OnAdapterListener) :
     RecyclerView.Adapter<SearchRecycleAdapter.ViewHolder>() {
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
+    private var onSelect: List<EvPointDetails>? = null
+
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val textView: TextView
         val goButton = view.findViewById<Button>(R.id.button_go)
 
+
         init {
+
             // Define click listener for the ViewHolder's View.
             textView = view.findViewById(R.id.list_view)
         }
+
     }
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val layoutInflater = LayoutInflater.from(viewGroup.context)
         val view = layoutInflater
-            .inflate(R.layout.fragment_searchlist, viewGroup, false)
+            .inflate(R.layout.fragment_searchlistitem, viewGroup, false)
         return ViewHolder(view)
     }
+
     @SuppressLint("QueryPermissionsNeeded")
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val items = address.map {
@@ -49,10 +58,10 @@ class SearchRecycleAdapter(private val address: List<EvPointDetails>) :
                     it.AddressInfo?.Town + ", " +
                     it.AddressInfo?.Postcode
         }
-        viewHolder.textView.text = items[position].toString()
+        viewHolder.textView.text = items[position]
         viewHolder.goButton.setOnClickListener {
-            val lat = address.map { (it.AddressInfo?.Latitude)}[position]
-            val lon = address.map { it.AddressInfo?.Longitude}[position]
+            val lat = address.map { (it.AddressInfo?.Latitude) }[position]
+            val lon = address.map { it.AddressInfo?.Longitude }[position]
             val navigationIntentUri: Uri =
                 Uri.parse("google.navigation:q=" + lat + "," + lon)
             val context = viewHolder.itemView.context
@@ -61,9 +70,14 @@ class SearchRecycleAdapter(private val address: List<EvPointDetails>) :
             intent.setPackage("com.google.android.apps.maps")
             startActivity(context, intent, bundle)
         }
-        viewHolder.textView.setOnClickListener {
-            val intent = Intent(viewHolder.itemView.context, DetailActivity::class.java)
-            val pos = address[position]
+        val pos = address[position]
+        viewHolder.textView.setOnClickListener { listener.onClick(pos) }
+
+        /*viewHolder.textView.setOnClickListener {
+            val intent = Intent(viewHolder.itemView.context, DetailFragment::class.java)
+            //val pos = address[position]
+
+
             val AddressLine1 = pos.AddressInfo?.AddressLine1
             val AddressLine2 = pos.AddressInfo?.AddressLine2
             val Longitude = pos.AddressInfo?.Longitude
@@ -88,13 +102,21 @@ class SearchRecycleAdapter(private val address: List<EvPointDetails>) :
                 NumberOfPoints,
                 dataUpdate,
             )
-            val connToArray = connectionList?.toConnections()
+            *//*val connToArray = connectionList?.toConnections()
             intent.putExtra("ALL ITEMS", selectedPoint)
             val arrayHolder = connToArray?.let { it1 -> ArrayList<Connection>(it1) }
-            intent.putParcelableArrayListExtra("ARRAY OF CONNECTIONS", arrayHolder)
-            viewHolder.itemView.context.startActivity(intent)
-        }
+            intent.putParcelableArrayListExtra("ARRAY OF CONNECTIONS", arrayHolder)*//*
+            //viewHolder.itemView.context.startActivity(intent)
+
+
+        }*/
     }
-    override fun getItemCount() = address.size
-}
+    interface OnAdapterListener {
+        fun onClick(address: EvPointDetails)
+    }
+
+        override fun getItemCount() = address.size
+    }
+
+
 

@@ -13,7 +13,6 @@ import com.example.call_mapbox_api.MyApplication
 
 class SearchListViewModel(
     private val searchListRepository: SearchListRepository,
-    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     var listOfItems = MutableLiveData<List<EvPointDetails>>()
@@ -37,10 +36,8 @@ class SearchListViewModel(
                 modelClass: Class<T>,
                 extras: CreationExtras
             ): T {
-                val savedStateHandle = extras.createSavedStateHandle()
                 return SearchListViewModel(
                     MyApplication().getMyApp(),
-                    savedStateHandle
                 ) as T
             }
         }

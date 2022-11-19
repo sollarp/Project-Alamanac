@@ -7,9 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.call_mapbox_api.Connection
 import com.example.call_mapbox_api.R
+import com.example.call_mapbox_api.remote.ConnectionX
 import kotlin.collections.ArrayList
 
-class DetailRecycleAdapter(private val connectionsItemList: ArrayList<Connection>):
+class DetailRecycleAdapter(private val connectionsItemList: List<ConnectionX>):
     RecyclerView.Adapter<DetailRecycleAdapter.MainViewHolder>(){
 
     inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -1,6 +1,7 @@
 package com.example.call_mapbox_api.util
 
 
+import com.example.call_mapbox_api.remote.ConnectionX
 import java.io.Serializable
 
 
@@ -15,6 +16,7 @@ data class ItemDataConverter(
     val UsageCost: String?,
     val NumberOfPoints: Int?,
     val DateLastStatusUpdate: String?,
+    val Connection: List<ConnectionX>?
 ): Serializable
 
 
