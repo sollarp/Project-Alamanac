@@ -11,16 +11,14 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.call_mapbox_api.Connection
-import com.example.call_mapbox_api.util.ItemDataConverter
 import com.example.call_mapbox_api.R
-import com.example.call_mapbox_api.databinding.ActivityDetailsBinding.bind
 import com.example.call_mapbox_api.model.EvPointDetails
-import com.example.call_mapbox_api.toConnections
-import com.example.call_mapbox_api.homescreen.ui.DetailFragment
 
-class SearchRecycleAdapter(private val address: List<EvPointDetails>,
-                           val listener: OnAdapterListener) :
+
+class SearchRecycleAdapter(
+    private val address: List<EvPointDetails>,
+    private val listener: OnAdapterListener
+) :
     RecyclerView.Adapter<SearchRecycleAdapter.ViewHolder>() {
     /**
      * Provide a reference to the type of views that you are using
@@ -32,7 +30,6 @@ class SearchRecycleAdapter(private val address: List<EvPointDetails>,
 
         val textView: TextView
         val goButton = view.findViewById<Button>(R.id.button_go)
-
 
         init {
 
@@ -72,51 +69,14 @@ class SearchRecycleAdapter(private val address: List<EvPointDetails>,
         }
         val pos = address[position]
         viewHolder.textView.setOnClickListener { listener.onClick(pos) }
-
-        /*viewHolder.textView.setOnClickListener {
-            val intent = Intent(viewHolder.itemView.context, DetailFragment::class.java)
-            //val pos = address[position]
-
-
-            val AddressLine1 = pos.AddressInfo?.AddressLine1
-            val AddressLine2 = pos.AddressInfo?.AddressLine2
-            val Longitude = pos.AddressInfo?.Longitude
-            val Latitude = pos.AddressInfo?.Latitude
-            val Title = pos.AddressInfo?.Title
-            val PostCode = pos.AddressInfo?.Postcode
-            val Town = pos.AddressInfo?.Town
-            val UsageCost = pos.UsageCost
-            val NumberOfPoints = pos.NumberOfPoints
-            val dataUpdate = pos.DateLastStatusUpdate
-            val connectionList = pos.Connection
-
-            val selectedPoint = ItemDataConverter(
-                AddressLine1,
-                AddressLine2,
-                Longitude,
-                Latitude,
-                Title,
-                PostCode,
-                Town,
-                UsageCost,
-                NumberOfPoints,
-                dataUpdate,
-            )
-            *//*val connToArray = connectionList?.toConnections()
-            intent.putExtra("ALL ITEMS", selectedPoint)
-            val arrayHolder = connToArray?.let { it1 -> ArrayList<Connection>(it1) }
-            intent.putParcelableArrayListExtra("ARRAY OF CONNECTIONS", arrayHolder)*//*
-            //viewHolder.itemView.context.startActivity(intent)
-
-
-        }*/
     }
+
     interface OnAdapterListener {
         fun onClick(address: EvPointDetails)
     }
 
-        override fun getItemCount() = address.size
-    }
+    override fun getItemCount() = address.size
+}
 
 
 
