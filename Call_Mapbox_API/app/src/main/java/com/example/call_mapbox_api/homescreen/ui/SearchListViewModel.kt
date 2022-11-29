@@ -1,33 +1,34 @@
 package com.example.call_mapbox_api.homescreen.ui
 
-import androidx.lifecycle.*
-import com.example.call_mapbox_api.homescreen.data.SearchListRepository
+import androidx.lifecycle.MutableLiveData
 import com.example.call_mapbox_api.model.EvPointDetails
-import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.call_mapbox_api.MyApplication
-
+import com.example.call_mapbox_api.domain.SearchListUseCase
+import kotlinx.coroutines.launch
 
 class SearchListViewModel(
-    private val searchListRepository: SearchListRepository,
+    //private val searchListRepository: SearchListRepository,
+    private val searchListUseCase: SearchListUseCase
 ) : ViewModel() {
 
     var listOfItems = MutableLiveData<List<EvPointDetails>>()
 
     init {
         viewModelScope.launch {
-            getElements()
+            getListUseCase()
         }
     }
 
-    suspend fun getElements() {
-        return searchListRepository.getlatestList().collect { items ->
-            listOfItems.postValue(items)
+    suspend fun getListUseCase() {
+        searchListUseCase.invoke().collect{
+            items -> listOfItems.postValue(items)
         }
     }
+
     //Define ViewModel factory in a companion object
     companion object {
         val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {

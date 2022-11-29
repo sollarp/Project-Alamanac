@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.model.EvPointDetails
 
-
 class SearchRecycleAdapter(
     private val address: List<EvPointDetails>,
     private val listener: OnAdapterListener
@@ -24,8 +23,6 @@ class SearchRecycleAdapter(
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    private var onSelect: List<EvPointDetails>? = null
-
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val textView: TextView

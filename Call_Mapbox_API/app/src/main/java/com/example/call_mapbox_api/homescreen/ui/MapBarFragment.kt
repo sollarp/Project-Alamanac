@@ -16,10 +16,6 @@ import com.example.call_mapbox_api.databinding.FragmentMapbarBinding
 
 class MapBarFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MapBarFragment()
-    }
-
     private var fragmentMapbarBinding: FragmentMapbarBinding? = null
 
     override fun onCreateView(
@@ -31,7 +27,7 @@ class MapBarFragment : Fragment() {
         fragmentMapbarBinding = binding
         val searchBar = view.findViewById<EditText>(R.id.input_search)
         searchBar.focusable = View.NOT_FOCUSABLE
-        searchBar.setOnClickListener(object: View.OnClickListener{
+        searchBar.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 val softKey =
                     context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

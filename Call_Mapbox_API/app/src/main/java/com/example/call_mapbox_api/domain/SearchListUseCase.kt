@@ -1,20 +1,28 @@
 package com.example.call_mapbox_api.domain
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.call_mapbox_api.homescreen.data.SearchListRepository
+import com.example.call_mapbox_api.homescreen.data.ISearchListRepository
 import com.example.call_mapbox_api.model.EvPointDetails
-import kotlinx.coroutines.launch
+import com.example.call_mapbox_api.model.toEvPointDetails
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 
 class SearchListUseCase (
-    private val searchListRepository: SearchListRepository ) {
+    private val searchListRepository: ISearchListRepository,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.Default) : ISearchListUseCase
+{
 
-    var listOfItems = MutableLiveData<List<EvPointDetails>>()
+    override suspend operator fun invoke(): Flow<List<EvPointDetails>> =
+        withContext(dispatcher) {
+            searchListRepository.fetchList().map { items -> items.toEvPointDetails() }
+            }
 
-
-    suspend fun getElements() {
-        return searchListRepository.getlatestList().collect { items ->
-            listOfItems.postValue(items)
-        }
+        // TODO: map data models to item view models
     }
+
+interface ISearchListUseCase {
+    suspend operator fun invoke(): Flow<List<EvPointDetails>>
 }

@@ -32,7 +32,7 @@ class DetailFragment : Fragment() {
 
         setFragmentResultListener("requestKey") { key, bundle ->
             val result = bundle.getSerializable("data") as ItemDataConverter
-            println(result)
+
             val add1 = view.findViewById<TextView>(R.id.addressline1)
             val add2 = view.findViewById<TextView>(R.id.addressline2)
             val town = view.findViewById<TextView>(R.id.town)
