@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 
 @Keep
 @Serializable
-data class AddressInfoX(
+data class AddressInfo(
     val AddressLine1: String?,
     val AddressLine2: String?,
     val CountryID: Int?,

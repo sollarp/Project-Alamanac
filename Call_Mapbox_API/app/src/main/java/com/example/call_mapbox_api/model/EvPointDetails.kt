@@ -1,7 +1,6 @@
 package com.example.call_mapbox_api.model
 
-import com.example.call_mapbox_api.remote.AddressInfoX
-import com.example.call_mapbox_api.remote.ConnectionX
+import com.example.call_mapbox_api.remote.AddressInfo
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -20,6 +19,6 @@ data class EvPointDetails(
     val UUID: String?,
     val UsageCost: String?,
     val UsageTypeID: Int?,
-    val AddressInfo: AddressInfoX?,
-    val Connection: List<ConnectionX>?
+    val AddressInfo: AddressInfo,
+    val Connection: List<com.example.call_mapbox_api.remote.Connection>?
 )

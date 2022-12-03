@@ -1,33 +1,39 @@
 package com.example.call_mapbox_api.homescreen.ui
 
 import androidx.lifecycle.*
-import com.example.call_mapbox_api.homescreen.data.SearchListRepository
-import com.example.call_mapbox_api.model.EvPointDetails
-import kotlinx.coroutines.launch
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.call_mapbox_api.MyApplication
-
+import com.example.call_mapbox_api.domain.ISearchListUseCase
+import com.example.call_mapbox_api.model.EvPointDetails
+import com.example.call_mapbox_api.model.ItemDataConverter
+import kotlinx.coroutines.launch
 
 class SearchListViewModel(
-    private val searchListRepository: SearchListRepository,
-    private val savedStateHandle: SavedStateHandle
+    //private val searchListRepository: SearchListRepository,
+    private val searchListUseCase: ISearchListUseCase,
 ) : ViewModel() {
 
     var listOfItems = MutableLiveData<List<EvPointDetails>>()
+    var connectionItems = MutableLiveData<ItemDataConverter>()
 
     init {
         viewModelScope.launch {
-            getElements()
+            getListUseCase()
         }
     }
 
-    suspend fun getElements() {
-        return searchListRepository.getlatestList().collect { items ->
-            listOfItems.postValue(items)
+    suspend fun getListUseCase() {
+        searchListUseCase.invoke().collect{
+                items -> listOfItems.postValue(items)
         }
+    }
+
+    fun setDetailItems(item: ItemDataConverter) {
+        connectionItems.value = item
+    }
+
+    fun getDetailItems(): MutableLiveData<ItemDataConverter> {
+        return connectionItems
     }
     //Define ViewModel factory in a companion object
     companion object {
@@ -37,10 +43,8 @@ class SearchListViewModel(
                 modelClass: Class<T>,
                 extras: CreationExtras
             ): T {
-                val savedStateHandle = extras.createSavedStateHandle()
                 return SearchListViewModel(
                     MyApplication().getMyApp(),
-                    savedStateHandle
                 ) as T
             }
         }
