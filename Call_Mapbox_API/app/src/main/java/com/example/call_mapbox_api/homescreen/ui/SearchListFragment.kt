@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -20,12 +18,12 @@ import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.databinding.FragmentSearchListBinding
 import com.example.call_mapbox_api.homescreen.data.SearchRecycleAdapter
 import com.example.call_mapbox_api.model.EvPointDetails
-import com.example.call_mapbox_api.util.ItemDataConverter
+import com.example.call_mapbox_api.model.itemDataConverter
 import kotlinx.coroutines.launch
 
 class SearchListFragment : Fragment() {
 
-    private val viewModel: SearchListViewModel by viewModels { SearchListViewModel.Factory }
+    private val viewModel: SearchListViewModel by activityViewModels { SearchListViewModel.Factory }
     private var fragmentSearchlistBinding: FragmentSearchListBinding? = null
 
     override fun onCreateView(
@@ -47,48 +45,36 @@ class SearchListFragment : Fragment() {
                     val inputMethodManager =
                         context?.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE)
                                 as InputMethodManager
-                    inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+                    inputMethodManager
+                        .toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
                     f = false
                 }
             }
         })
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.listOfItems.observe(viewLifecycleOwner) {
-                    val adapter = SearchRecycleAdapter(it, object : SearchRecycleAdapter.OnAdapterListener {
-                        override fun onClick(address: EvPointDetails) {
-                            val selectedPoint = ItemDataConverter(
-                                address.AddressInfo?.AddressLine1,
-                                address.AddressInfo?.AddressLine2,
-                                address.AddressInfo?.Longitude,
-                                address.AddressInfo?.Latitude,
-                                address.AddressInfo?.Title,
-                                address.AddressInfo?.Postcode,
-                                address.AddressInfo?.Town,
-                                address.UsageCost,
-                                address.NumberOfPoints,
-                                address.DateLastStatusUpdate,
-                                address.Connection
-                            )
-                            setFragmentResult(
-                                "requestKey",
-                                bundleOf("data" to selectedPoint)
-                            )
-                            val navHostFragment =
-                                activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-                            val navController = navHostFragment.navController
-                            navController.navigate(R.id.detailFragment)
-                        }
-                    })
-                    recyclerView.layoutManager =
-                        StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-                    recyclerView.adapter = adapter
+        viewLifecycleOwner
+            .lifecycleScope
+            .launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.listOfItems.observe(viewLifecycleOwner) {
+                        val adapter = SearchRecycleAdapter(
+                            it, object : SearchRecycleAdapter.OnAdapterListener {
+                                override fun onClick(address: EvPointDetails) {
+                                    viewModel.setDetailItems(itemDataConverter(address))
+                                    val navHostFragment =
+                                        activity?.
+                                        supportFragmentManager?.
+                                        findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+                                    val navController = navHostFragment.navController
+                                    navController.navigate(R.id.detailFragment)
+                                }
+                            })
+                        recyclerView.layoutManager =
+                            StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+                        recyclerView.adapter = adapter
+                    }
                 }
-
             }
-
-        }
         return view
     }
 }

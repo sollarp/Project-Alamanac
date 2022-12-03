@@ -1,7 +1,6 @@
 package com.example.call_mapbox_api.homescreen.ui
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.databinding.FragmentMapbarBinding
 
@@ -39,7 +37,6 @@ class MapBarFragment : Fragment() {
                 navController.navigate(R.id.searchlistFragment)
             }
         })
-
         return view
     }
 }

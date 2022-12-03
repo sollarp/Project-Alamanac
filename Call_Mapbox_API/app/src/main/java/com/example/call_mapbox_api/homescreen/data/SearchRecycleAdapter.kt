@@ -29,11 +29,9 @@ class SearchRecycleAdapter(
         val goButton = view.findViewById<Button>(R.id.button_go)
 
         init {
-
             // Define click listener for the ViewHolder's View.
             textView = view.findViewById(R.id.list_view)
         }
-
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -47,15 +45,15 @@ class SearchRecycleAdapter(
     @SuppressLint("QueryPermissionsNeeded")
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val items = address.map {
-            it.AddressInfo?.AddressLine1 + ", " +
-                    it.AddressInfo?.AddressLine2 + ", " +
-                    it.AddressInfo?.Town + ", " +
-                    it.AddressInfo?.Postcode
+            it.AddressInfo.AddressLine1 + ", " +
+                    it.AddressInfo.AddressLine2 + ", " +
+                    it.AddressInfo.Town + ", " +
+                    it.AddressInfo.Postcode
         }
         viewHolder.textView.text = items[position]
         viewHolder.goButton.setOnClickListener {
-            val lat = address.map { (it.AddressInfo?.Latitude) }[position]
-            val lon = address.map { it.AddressInfo?.Longitude }[position]
+            val lat = address.map { (it.AddressInfo.Latitude) }[position]
+            val lon = address.map { it.AddressInfo.Longitude }[position]
             val navigationIntentUri: Uri =
                 Uri.parse("google.navigation:q=" + lat + "," + lon)
             val context = viewHolder.itemView.context

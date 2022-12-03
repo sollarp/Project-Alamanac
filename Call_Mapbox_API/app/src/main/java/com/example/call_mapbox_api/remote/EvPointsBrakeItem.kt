@@ -3,16 +3,13 @@ package com.example.call_mapbox_api.remote
 
 import androidx.annotation.Keep
 import com.example.call_mapbox_api.model.EvPointDetails
-import com.example.call_mapbox_api.model.EvPointIds
 import kotlinx.serialization.Serializable
 
 @Keep
-//@Parcelize
-//@JsonClass(generateAdapter = true)
 @Serializable
-data class EvPointsBrakeItemX(
-    val AddressInfo: AddressInfoX?,
-    val Connections: List<ConnectionX>?,
+data class EvPointsBrakeItem(
+    val AddressInfo: AddressInfo,
+    val Connections: List<Connection>?,
     val DataProviderID: Int?,
     val DataQualityLevel: Int?,
     val DateCreated: String?,
@@ -30,36 +27,25 @@ data class EvPointsBrakeItemX(
     val UsageTypeID: Int?
 )
 
-
-
-fun List<EvPointsBrakeItemX>.toEvPointIds() : List<EvPointIds> {
-    return this.map {
-        EvPointIds(
-            ID = it.ID
-        )
-    }
-}
-
-fun List<EvPointsBrakeItemX>.toEvPointDetails() : List<EvPointDetails> {
+fun List<EvPointsBrakeItem>.toEvPointDetails() : List<EvPointDetails> {
     return this.map {
         EvPointDetails(
+            AddressInfo = it.AddressInfo,
             Connection = it.Connections,
-            AddressInfo =it.AddressInfo,
+            NumberOfPoints = it.NumberOfPoints,
+            ID = it.ID,
+            StatusTypeID = it.StatusTypeID,
+            UsageCost = it.UsageCost,
+            UUID = it.UUID,
+            OperatorID = it.OperatorID,
+            IsRecentlyVerified = it.IsRecentlyVerified,
             DataProviderID = it.DataProviderID,
             DataQualityLevel = it.DataQualityLevel,
             DateCreated = it.DateCreated,
             DateLastStatusUpdate = it.DateLastStatusUpdate,
             DateLastVerified = it.DateLastVerified,
-            ID = it.ID,
-            IsRecentlyVerified = it.IsRecentlyVerified,
-            NumberOfPoints = it.NumberOfPoints,
-            OperatorID = it.OperatorID,
-            StatusTypeID = it.StatusTypeID,
-            SubmissionStatusTypeID = it.SubmissionStatusTypeID,
-            UUID = it.UUID,
-            UsageCost = it.UsageCost,
-            UsageTypeID = it.UsageTypeID
-
+            UsageTypeID = it.UsageTypeID,
+            SubmissionStatusTypeID = it.SubmissionStatusTypeID
         )
     }
 }

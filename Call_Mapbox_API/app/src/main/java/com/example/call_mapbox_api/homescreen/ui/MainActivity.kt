@@ -17,21 +17,3 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
-
-/*override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-    val searchBar = findViewById<EditText>(R.id.input_search)
-    searchBar.focusable = View.NOT_FOCUSABLE
-    searchBar.setOnClickListener(object: View.OnClickListener{
-        override fun onClick(view: View?) {
-            val softKey =
-                application.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            softKey.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-            searchBar.focusable = View.FOCUSABLE
-            val intent = Intent(this@MainActivity, SearchListActivity::class.java)
-            startActivity(intent)
-        }
-    })
-}
-}*/

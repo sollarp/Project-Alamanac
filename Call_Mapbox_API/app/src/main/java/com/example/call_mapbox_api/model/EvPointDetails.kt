@@ -1,9 +1,6 @@
 package com.example.call_mapbox_api.model
 
-import com.example.call_mapbox_api.Connection
-import com.example.call_mapbox_api.remote.AddressInfoX
-import com.example.call_mapbox_api.remote.ConnectionX
-import com.example.call_mapbox_api.remote.EvPointsBrakeItemX
+import com.example.call_mapbox_api.remote.AddressInfo
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -22,29 +19,6 @@ data class EvPointDetails(
     val UUID: String?,
     val UsageCost: String?,
     val UsageTypeID: Int?,
-    val AddressInfo: AddressInfoX?,
-    val Connection: List<ConnectionX>?
+    val AddressInfo: AddressInfo,
+    val Connection: List<com.example.call_mapbox_api.remote.Connection>?
 )
-
-fun List<EvPointsBrakeItemX>.toEvPointDetails() : List<EvPointDetails> {
-    return this.map {
-        EvPointDetails(
-            AddressInfo = it.AddressInfo,
-            Connection = it.Connections,
-            NumberOfPoints = it.NumberOfPoints,
-            ID = it.ID,
-            StatusTypeID = it.StatusTypeID,
-            UsageCost = it.UsageCost,
-            UUID = it.UUID,
-            OperatorID = it.OperatorID,
-            IsRecentlyVerified = it.IsRecentlyVerified,
-            DataProviderID = it.DataProviderID,
-            DataQualityLevel = it.DataQualityLevel,
-            DateCreated = it.DateCreated,
-            DateLastStatusUpdate = it.DateLastStatusUpdate,
-            DateLastVerified = it.DateLastVerified,
-            UsageTypeID = it.UsageTypeID,
-            SubmissionStatusTypeID = it.SubmissionStatusTypeID
-        )
-    }
-}
