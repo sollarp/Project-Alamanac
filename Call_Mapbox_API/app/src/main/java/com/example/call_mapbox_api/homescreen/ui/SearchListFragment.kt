@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.call_mapbox_api.R
@@ -61,16 +61,17 @@ class SearchListFragment : Fragment() {
                             it, object : SearchRecycleAdapter.OnAdapterListener {
                                 override fun onClick(address: EvPointDetails) {
                                     viewModel.setDetailItems(itemDataConverter(address))
-                                    val navHostFragment =
-                                        activity?.
-                                        supportFragmentManager?.
-                                        findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-                                    val navController = navHostFragment.navController
-                                    navController.navigate(R.id.detailFragment)
+                                    val action =
+                                        SearchListFragmentDirections
+                                            .actionSearchlistFragmentToDetailFragment()
+                                    view.findNavController().navigate(action)
                                 }
                             })
                         recyclerView.layoutManager =
-                            StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+                            StaggeredGridLayoutManager(
+                                1,
+                                StaggeredGridLayoutManager.VERTICAL
+                            )
                         recyclerView.adapter = adapter
                     }
                 }
