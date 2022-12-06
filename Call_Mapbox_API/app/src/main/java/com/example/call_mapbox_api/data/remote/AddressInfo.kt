@@ -1,9 +1,7 @@
-package com.example.call_mapbox_api.remote
+package com.example.call_mapbox_api.data.remote
 
 
-import android.os.Parcel
 import androidx.annotation.Keep
-import android.os.Parcelable
 import kotlinx.serialization.Serializable
 
 @Keep

@@ -1,7 +1,6 @@
-package com.example.call_mapbox_api.homescreen.data
+package com.example.call_mapbox_api.data
 
-import com.example.call_mapbox_api.api.OpenMapApi
-import com.example.call_mapbox_api.remote.EvPointsBrakeItem
+import com.example.call_mapbox_api.data.remote.EvPointsBrakeItem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

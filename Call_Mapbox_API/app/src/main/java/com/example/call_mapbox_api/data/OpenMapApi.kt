@@ -1,6 +1,6 @@
-package com.example.call_mapbox_api.api
+package com.example.call_mapbox_api.data
 
-import com.example.call_mapbox_api.remote.EvPointsBrakeItem
+import com.example.call_mapbox_api.data.remote.EvPointsBrakeItem
 import retrofit2.http.GET
 
 

@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.homescreen.ui
+package com.example.call_mapbox_api.ui.homescreen
 
 import android.content.Context
 import android.os.Bundle

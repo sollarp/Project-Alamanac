@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.homescreen.ui
+package com.example.call_mapbox_api.ui.searchscreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.databinding.FragmentSearchListBinding
-import com.example.call_mapbox_api.homescreen.data.SearchRecycleAdapter
 import com.example.call_mapbox_api.model.EvPointDetails
 import com.example.call_mapbox_api.model.itemDataConverter
 import kotlinx.coroutines.launch
@@ -24,7 +23,7 @@ import kotlinx.coroutines.launch
 class SearchListFragment : Fragment() {
 
     private val viewModel: SearchListViewModel by activityViewModels { SearchListViewModel.Factory }
-    private var fragmentSearchlistBinding: FragmentSearchListBinding? = null
+    private var fragmentSearchListBinding: FragmentSearchListBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +32,7 @@ class SearchListFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentSearchListBinding.inflate(inflater, container, false)
         val view = binding.root
-        fragmentSearchlistBinding = binding
+        fragmentSearchListBinding = binding
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycle_search)
         var t = 0
         var f = true

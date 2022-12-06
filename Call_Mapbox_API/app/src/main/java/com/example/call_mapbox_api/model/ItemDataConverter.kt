@@ -1,6 +1,6 @@
 package com.example.call_mapbox_api.model
 
-import com.example.call_mapbox_api.remote.Connection
+import com.example.call_mapbox_api.data.remote.Connection
 import java.io.Serializable
 
 data class ItemDataConverter(
@@ -11,7 +11,7 @@ data class ItemDataConverter(
     val Postcode: String?,
     val Title: String?,
     val Town: String?,
-    val UsageCost: String?,
+    var UsageCost: String?,
     val NumberOfPoints: Int?,
     val DateLastStatusUpdate: String?,
     val Connection: List<Connection>?

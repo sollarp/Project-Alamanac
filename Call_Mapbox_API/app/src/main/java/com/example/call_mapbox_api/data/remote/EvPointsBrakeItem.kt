@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.remote
+package com.example.call_mapbox_api.data.remote
 
 
 import androidx.annotation.Keep
@@ -23,7 +23,7 @@ data class EvPointsBrakeItem(
     val StatusTypeID: Int?,
     val SubmissionStatusTypeID: Int?,
     val UUID: String?,
-    val UsageCost: String?,
+    val UsageCost: String,
     val UsageTypeID: Int?
 )
 

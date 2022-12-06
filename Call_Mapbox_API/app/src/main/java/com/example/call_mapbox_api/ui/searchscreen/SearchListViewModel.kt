@@ -1,14 +1,8 @@
-package com.example.call_mapbox_api.homescreen.ui
+package com.example.call_mapbox_api.ui.searchscreen
 
-import android.app.PendingIntent.getActivity
-import android.view.View
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.example.call_mapbox_api.MyApplication
-import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.domain.ISearchListUseCase
 import com.example.call_mapbox_api.model.EvPointDetails
 import com.example.call_mapbox_api.model.ItemDataConverter

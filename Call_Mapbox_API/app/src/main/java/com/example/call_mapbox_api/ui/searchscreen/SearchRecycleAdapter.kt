@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.homescreen.data
+package com.example.call_mapbox_api.ui.searchscreen
 
 import android.annotation.SuppressLint
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.example.call_mapbox_api.homescreen.data
+package com.example.call_mapbox_api.ui.detailscreen
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.call_mapbox_api.R
-import com.example.call_mapbox_api.remote.Connection
+import com.example.call_mapbox_api.data.remote.Connection
 
 
 class DetailRecycleAdapter(private val connectionsItemList: List<Connection>):
