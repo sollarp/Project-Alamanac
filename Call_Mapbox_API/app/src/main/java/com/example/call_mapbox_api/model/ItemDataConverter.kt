@@ -1,6 +1,6 @@
 package com.example.call_mapbox_api.model
 
-import com.example.call_mapbox_api.data.remote.Connection
+import com.example.call_mapbox_api.data.remote.Connections
 import java.io.Serializable
 
 data class ItemDataConverter(
@@ -14,7 +14,7 @@ data class ItemDataConverter(
     var UsageCost: String?,
     val NumberOfPoints: Int?,
     val DateLastStatusUpdate: String?,
-    val Connection: List<Connection>?
+    val Connection: List<Connections>?
 ): Serializable
 
 fun itemDataConverter(address: EvPointDetails): ItemDataConverter {
@@ -29,7 +29,7 @@ fun itemDataConverter(address: EvPointDetails): ItemDataConverter {
         address.UsageCost,
         address.NumberOfPoints,
         address.DateLastStatusUpdate,
-        address.Connection
+        address.Connections
     )
 }
 

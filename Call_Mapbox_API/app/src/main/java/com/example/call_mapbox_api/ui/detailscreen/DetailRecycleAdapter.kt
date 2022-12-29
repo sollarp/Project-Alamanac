@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.call_mapbox_api.R
-import com.example.call_mapbox_api.data.remote.Connection
+import com.example.call_mapbox_api.data.remote.Connections
 
 
-class DetailRecycleAdapter(private val connectionsItemList: List<Connection>):
+class DetailRecycleAdapter(private val connectionsItemList: List<Connections>):
     RecyclerView.Adapter<DetailRecycleAdapter.MainViewHolder>(){
 
     inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
