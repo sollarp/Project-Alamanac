@@ -6,8 +6,12 @@ import com.example.call_mapbox_api.data.IEvPointLocalDataSource
 import com.example.call_mapbox_api.data.remote.EvPointsBrakeItem
 import com.example.call_mapbox_api.model.toEvPointsBreakItems
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SearchListRepository(
+
+@Singleton
+class SearchListRepository @Inject constructor(
     private val evPointDataSource: IEvPointRemoteDataSource,
     private val localDataSource: IEvPointLocalDataSource
 ) : ISearchListRepository {

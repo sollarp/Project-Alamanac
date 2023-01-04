@@ -7,17 +7,21 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.databinding.FragmentDetailBinding
 import com.example.call_mapbox_api.ui.searchscreen.SearchListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
 
     private var fragmentDetailBinding: FragmentDetailBinding? = null
-    private val viewModel: SearchListViewModel by activityViewModels { SearchListViewModel.Factory}
+    //private val viewModel: SearchListViewModel by activityViewModels { SearchListViewModel.Factory}
+    private val viewModel: SearchListViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

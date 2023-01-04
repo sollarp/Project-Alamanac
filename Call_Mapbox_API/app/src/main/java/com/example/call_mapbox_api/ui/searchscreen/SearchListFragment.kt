@@ -18,11 +18,16 @@ import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.databinding.FragmentSearchListBinding
 import com.example.call_mapbox_api.model.EvPointDetails
 import com.example.call_mapbox_api.model.itemDataConverter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
+@AndroidEntryPoint
 class SearchListFragment : Fragment() {
 
-    private val viewModel: SearchListViewModel by activityViewModels { SearchListViewModel.Factory }
+    //private val viewModel: SearchListViewModel by activityViewModels { SearchListViewModel.Factory }
+    private val viewModel: SearchListViewModel by activityViewModels()
+
     private var fragmentSearchListBinding: FragmentSearchListBinding? = null
 
     override fun onCreateView(

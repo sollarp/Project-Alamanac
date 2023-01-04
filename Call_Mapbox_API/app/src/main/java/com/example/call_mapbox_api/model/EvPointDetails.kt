@@ -5,8 +5,6 @@ import com.example.call_mapbox_api.data.remote.Connections
 import com.example.call_mapbox_api.data.remote.EvPointsBrakeItem
 import kotlinx.serialization.Serializable
 
-// This class has not been used. Room using EvPointsBreakItems
-
 @Serializable
 data class EvPointDetails(
     val ID: Int?,

@@ -8,8 +8,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class SearchListUseCase (
+class SearchListUseCase @Inject constructor(
     private val searchListRepository: ISearchListRepository,
     private val dispatcher: CoroutineDispatcher = Dispatchers.Default) : ISearchListUseCase
 {

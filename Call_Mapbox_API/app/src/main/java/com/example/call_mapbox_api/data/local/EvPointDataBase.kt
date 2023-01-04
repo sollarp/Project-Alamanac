@@ -11,23 +11,8 @@ import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = [EvPointsBrakeItem::class], version = 2, exportSchema = false)
 @TypeConverters(ConnectionConverter::class, AddressConverter::class)
+
 abstract class EvPointDataBase : RoomDatabase() {
 
-    abstract val evPointsDao: EvPointsDao
-
-    companion object {
-        // For Singleton instantiation
-        @Volatile
-        private var instance: EvPointDataBase? = null
-
-        fun getInstance(context: Context): EvPointDataBase {
-            return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
-            }
-        }
-        private fun buildDatabase(context: Context): EvPointDataBase {
-            return Room.databaseBuilder(context, EvPointDataBase::class.java, "evPointsDb")
-                .build()
-        }
-    }
+    abstract fun evPointsDao(): EvPointsDao
 }

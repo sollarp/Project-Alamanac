@@ -11,10 +11,12 @@ import android.widget.EditText
 import androidx.navigation.fragment.NavHostFragment
 import com.example.call_mapbox_api.R
 import com.example.call_mapbox_api.databinding.FragmentMapbarBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MapBarFragment : Fragment() {
 
-    private var fragmentMapbarBinding: FragmentMapbarBinding? = null
+    private var fragmentMapBarBinding: FragmentMapbarBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,7 +24,7 @@ class MapBarFragment : Fragment() {
     ): View {
         val binding = FragmentMapbarBinding.inflate(inflater, container, false)
         val view = binding.root
-        fragmentMapbarBinding = binding
+        fragmentMapBarBinding = binding
         val searchBar = view.findViewById<EditText>(R.id.input_search)
         searchBar.focusable = View.NOT_FOCUSABLE
         searchBar.setOnClickListener(object : View.OnClickListener {
